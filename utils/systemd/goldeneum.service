@@ -1,0 +1,17 @@
+[Unit]
+Description=Goldeneum Full Node
+After=network.target
+
+[Service]
+User=goldeneum
+Group=goldeneum
+WorkingDirectory=~
+
+Type=forking
+PIDFile=/var/run/goldeneumd.pid
+
+ExecStart=/usr/bin/goldeneumd --config-file /etc/goldeneumd.conf \
+    --detach --pidfile /var/run/goldeneumd.pid
+
+[Install]
+WantedBy=multi-user.target
